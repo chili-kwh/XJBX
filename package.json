@@ -3,10 +3,6 @@
   "privite": true,
   "version": "1.0.0",
   "description": "",
-  "dependencies": {
-    "animated": "^0.2.2"
-  },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
