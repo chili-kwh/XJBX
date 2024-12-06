@@ -1,8 +1,8 @@
 {
-  "name": "xjbx",
+  "name": "XJBX",
+  "privite": true,
   "version": "1.0.0",
   "description": "",
-  "main": "ValidParentheses.js",
   "dependencies": {
     "animated": "^0.2.2"
   },
@@ -12,12 +12,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JosefinaLee/XJBX.git"
+    "url": "git+https://github.com/chili-kwh/XJBX.git"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/JosefinaLee/XJBX/issues"
+    "url": "https://github.com/chili-kwh/XJBX/issues"
   },
-  "homepage": "https://github.com/JosefinaLee/XJBX#readme"
+  "homepage": "https://github.com/chili-kwh/XJBX#readme"
 }
