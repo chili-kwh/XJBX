@@ -1,1 +1,5 @@
-console.log(111)
+const a = () => {
+  console.log(111)
+}
+a()
+a()
