@@ -6,13 +6,13 @@ const swcJsOptions = {
       dynamicImport: true,
       decorators: true,
     },
-    target: 'es5',
+    target: 'es6',
     transform: {
       react: {
         pragma: 'React.createElement',
         pragmaFrag: 'React.Fragment',
         useBuiltins: true,
-        runtime: 'automatic', // React 17+ 的自动 JSX 运行时
+        // runtime: 'automatic', // React 17+ 的自动 JSX 运行时
       },
     },
   },
