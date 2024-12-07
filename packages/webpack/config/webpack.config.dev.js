@@ -37,6 +37,13 @@ module.exports = {
             manifest: require('../asset/react.manifest.json'),
         }),
     ],
+    optimization: {
+        splitChunks: {
+            chunks: 'async',
+            minSize: 0,
+            // name: 'chunk1', // 将异步加载的模块合并到一个文件
+        },
+    },
     resolve: {
         extensions: ['.js', '.jsx', '.css'],
         //   alias: {

@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "dev": "NODE_ENV=development webpack --progress --watch --config config/webpack.config.dev.js",
-    "prod": "NODE_ENV=production webpack --progress --config config/webpack.config.js",
+    "prod": "NODE_ENV=production webpack --progress --config config/webpack.config.js  --json > stats.json",
     "dll": "webpack --progress --config config/webpack.config.dll.js"
   },
   "keywords": [],
