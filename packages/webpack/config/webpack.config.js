@@ -1,7 +1,7 @@
 const webpack = require('webpack')
 const path = require('path')
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-// const swcJsOptions = require("./swc.config");
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
 module.exports = {
@@ -37,6 +37,7 @@ module.exports = {
             // 描述 react 动态链接库的文件内容
             manifest: require('../asset/react.manifest.json'),
         }),
+        new BundleAnalyzerPlugin()
     ],
     resolve: {
         extensions: ['.js', '.jsx', '.css'],
