@@ -20,13 +20,20 @@ module.exports = {
             {
                 // 如果项目源码中只有 js 文件就不要写成 /\.jsx?$/，提升正则表达式性能
                 test: /\.jsx?$/,
+                include: path.resolve(__dirname, '../src'),
                 // babel-loader 支持缓存转换出的结果，通过 cacheDirectory 选项开启
-                use: ['babel-loader'],
+                use: [
+                    // "thread-loader",
+                    'babel-loader?cacheDirectory',
+                    // 'stringReplaceLoader', // 自定义loader
+                ],
                 // use: ['babel-loader?cacheDirectory'],
                 // 只对项目根目录下的 src 目录中的文件采用 babel-loader
-                include: path.resolve(__dirname, '../src'),
             },
         ]
+    },
+    resolveLoader:{
+        modules: ['node_modules', path.resolve(__dirname, 'loader')],
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -37,7 +44,7 @@ module.exports = {
             // 描述 react 动态链接库的文件内容
             manifest: require('../asset/react.manifest.json'),
         }),
-        new BundleAnalyzerPlugin()
+        // new BundleAnalyzerPlugin()
     ],
     resolve: {
         extensions: ['.js', '.jsx', '.css'],
@@ -45,5 +52,8 @@ module.exports = {
         //     react: path.resolve(__dirname, 'node_modules/react') // 指定唯一的 React 路径
         //   },
         //   mainFields: ['main'],
+    },
+    cache: {
+        type: 'filesystem',
     },
 }
