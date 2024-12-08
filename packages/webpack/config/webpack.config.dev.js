@@ -5,7 +5,7 @@ const swcJsOptions = require("./swc.config");
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
 module.exports = {
-    mode: NODE_ENV,
+    mode: 'NODE_ENV',
     entry: {
         index: './src/index.js'
     },
@@ -13,6 +13,17 @@ module.exports = {
         filename: '[name].js',
         path: path.resolve(__dirname, '../dist'),
         clean: true,
+    },
+    devServer: {
+        static: {
+            directory: path.join(__dirname, '../pub'),
+        },
+        compress: true,
+        port: 9000,
+        hot: true,
+        watchOptions: {
+            ignored: /node_modules/,
+        },
     },
     // target: ['web', 'es5'],
     module: {
@@ -37,6 +48,9 @@ module.exports = {
             manifest: require('../asset/react.manifest.json'),
         }),
     ],
+    cache: {
+        type: 'filesystem',
+    },
     optimization: {
         splitChunks: {
             chunks: 'async',
