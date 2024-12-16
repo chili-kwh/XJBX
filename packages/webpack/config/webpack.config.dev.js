@@ -5,7 +5,7 @@ const swcJsOptions = require("./swc.config");
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
 module.exports = {
-    mode: 'NODE_ENV',
+    mode: NODE_ENV,
     entry: {
         index: './src/index.js'
     },

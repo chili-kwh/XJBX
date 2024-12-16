@@ -1,9 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState, Suspense } from "react";
+// import("./Dynamite1")
 
-const Dynamite = () => {
-  return (
-    <div>Dynamite1</div>
-  )
-}
+const App = () => {
+    const LazyComponent = React.lazy(() => import(/* webpackChunkName: "chunk1" */'./Dynamite1'));
+    const LazyComponent2 = React.lazy(() => import(/* webpackChunkName: "chunk1" */'./Dynamite2'));
+    const LazyComponent3 = React.lazy(() => import(/* webpackChunkName: "chunk1" */'./Dynamite2'));
 
-export default Dynamite
+    // const [D, setD] = useState(null);
+    //
+    // useEffect(() => {
+    //   import("./Dynamite").then(res => {
+    //     const D = res.default;
+    //     console.log(D);
+    //     setD(D);
+    //   });
+    // }, []);
+
+    return (
+        <div>
+            lalala
+            {/*{D && <D />}*/}
+            <Suspense fallback={<div>Loading...</div>}>
+                <LazyComponent />
+                <LazyComponent2 />
+                <LazyComponent3 />
+            </Suspense>
+        </div>
+    );
+};
+
+
+export default App;
+
+
