@@ -29,7 +29,7 @@ Function.prototype.myBind = function (thisArg, ...args) {
     if (this instanceof fn) {
       // 如果 `fn` 是作为构造函数被调用（即通过 `new` 创建实例），
       // 需要创建新的实例，并且 `this` 指向新实例。
-      // 通过 `new` 调用时，返回的是一个新对象，所以使用 `new originFn(...)` 来执行原始函数。
+      // 提供的 thisArg 会被忽略
       return new originFn(...args, ...args1);
     } else {
       // 如果 `fn` 是作为普通函数被调用，`this` 会指向传入的 `thisArg`。
