@@ -76,6 +76,19 @@ class MyPromise {
   static resolve = (val) => {
     return val instanceof MyPromise ? val : new MyPromise((res) => res(val))
   }
+
+  // finally()方法返回一个Promise。在promise结束时，无论结果是fulfilled或者是rejected，都会执行指定的回调函数。在finally之后，还可以继续then。并且会将值原封不动的传递给后面的then
+  // PS. 有同学问我MyPromise.resolve(callback())的意义，这里补充解释一下：这个写法其实涉及到一个finally()的使用细节，finally()如果return了一个reject状态的Promise，将会改变当前Promise的状态，这个MyPromise.resolve就用于改变Promise状态，在finally()没有返回reject态Promise或throw错误的情况下，去掉MyPromise.resolve也是一样的
+
+  finally(callback) {
+    return this.then(
+      value => MyPromise.resolve(callback()).then(() => value),             // MyPromise.resolve执行回调,并在then中return结果传递给后面的Promise
+      reason => MyPromise.resolve(callback()).then(() => { throw reason })  // reject同理
+    )
+  }
+
+
+
 }
 
 
@@ -147,3 +160,5 @@ MyPromise.resolve(thenable).then(res => {
 MyPromise.resolve(111).then(res => {
   console.log('res' + res);
 })
+
+
