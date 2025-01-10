@@ -56,3 +56,32 @@ person1.foo2()
 // 在这里它的外层作用域是函数Person，且这个是构造函数，并且使用了new来生成了对象person1，
 // 所以此时this的指向是为person1。
 person2.foo2()
+
+
+function Foo() {
+  getName = function() {
+    console.log(1);
+  };
+  return this;
+}
+Foo.getName = function() {
+  console.log(2);
+};
+Foo.prototype.getName = function() {
+  console.log(3);
+};
+var getName = function() {
+  console.log(4);
+};
+function getName() {
+  console.log(5);
+}
+
+//请写出以下输出结果：
+Foo.getName();
+getName(); // hoist
+Foo().getName(); // overwrite
+getName();
+new Foo.getName();
+new Foo().getName();
+new new Foo().getName();
